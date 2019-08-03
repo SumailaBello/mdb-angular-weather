@@ -1,0 +1,90 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 p-0">
+            <div class="jumbotron min-vh-100 text-center m-0 bg-dark text-light" id="jumbotron">
+                <h2 class=" animated bounceInDown">Weather Forecasts <span class="btn btn-light btn-sm" mdbWavesEffect (click)="refresh()" floating="true"><i class="fas fa-sync"></i></span>
+                </h2> 
+                <h4 *ngIf="forecastInfo">{{today}}</h4>
+                <h5 *ngIf="weeklyInfo">{{weeklyInfo.location.region}}, {{weeklyInfo.location.country}}</h5> 
+                <div *ngIf="forecastInfo" class="col text-center me">
+                    <p><strong> Date:</strong> {{forecastInfo.forecast.forecastday["0"].date}}
+                    </p>
+                </div> 
+                <div class="bg-light w-100"></div>
+                <br>
+                <div class="container-fluid">
+                    <!-- col1 -->
+                    <div class="row animated bounceInUp" id="mainrow">
+                        <div class="col-12 col-md text-center blue darken-3 pt-2" id="col-1">
+                            <h4 class="mt-10">Current Weather</h4>
+                            <ng-container *ngIf = "forecastInfo; else loading">
+                            <img [src]="forecastInfo.current.condition.icon" alt="" class="mt-15">
+                            <p >{{forecastInfo.current.condition.text}}
+                            </p>
+                            <hr class="bg-light w-50">
+                            <!-- <hr class="bg-light w-50 d-xs-none"> -->
+                            <div class="currentDetails">
+                            <p><span><strong> Temp.(&deg;C):</strong> {{forecastInfo.current.temp_c}}, </span>
+                            <span><strong> Feels like(&deg;C):</strong> {{forecastInfo.current.feelslike_c}}, </span>    
+                             <span><strong> Humidity:</strong> {{forecastInfo.current.humidity}}, </span>
+                            <span>
+                                <strong>Wind:</strong> 
+                                {{forecastInfo.current.wind_kph}}(kph), <strong>   Direction:</strong> {{forecastInfo.current.wind_dir}}
+                                <div>
+                                        <strong>Sunrise: </strong>{{forecastInfo.forecast.forecastday["0"].astro.sunrise}}, <strong>Sunset: </strong>{{forecastInfo.forecast.forecastday["0"].astro.sunset}}, 
+                                </div> 
+                            </span>
+                            </p>
+                            </div>
+                        </ng-container>
+                        <ng-template #loading>
+                            <h6>Loading...</h6>
+                        </ng-template>
+                    </div> 
+                    <!-- end of col1 -->
+
+                    <!-- col2 -->
+                    <div class="col-12 col-md text-center blue darken-3 pt-2">
+                        <h4>Later Today</h4>
+                        <ng-container *ngIf="forecastInfo; else loading2">
+                        <div>
+                            <img [src]="forecastInfo.forecast.forecastday['0'].day.condition.icon" alt="">
+                        <p>{{forecastInfo.forecast.forecastday["0"].day.condition.text}}</p>
+                        <hr class="bg-light w-50">
+                        <!-- <hr class="bg-light w-50 d-xs-none"> -->
+                        <p class="followDays">
+                        <span *ngIf="weeklyInfo" class="">
+                            {{nextDay1}}<img class="weeklyImg" [src]="weeklyInfo.forecast.forecastday['1'].day.condition.icon" alt="">|
+                        </span>
+                        
+                        <span *ngIf="weeklyInfo">
+                        {{nextDay2}} <img class="weeklyImg" [src]="weeklyInfo.forecast.forecastday['2'].day.condition.icon" alt="">|
+                        </span>
+                        <span *ngIf="weeklyInfo" class="">
+                         {{nextDay3}} <img class="weeklyImg" [src]="weeklyInfo.forecast.forecastday['3'].day.condition.icon" alt="">
+                        </span>
+                        <span *ngIf="weeklyInfo" class="d-none d-lg-inline">|
+                        {{nextDay4}} <img class="weeklyImg" [src]="weeklyInfo.forecast.forecastday['4'].day.condition.icon" alt="">|
+                        </span>
+                        <span *ngIf="weeklyInfo" class="d-none d-lg-inline">
+                        {{nextDay5}}<img class="weeklyImg" [src]="weeklyInfo.forecast.forecastday['5'].day.condition.icon" alt="">
+                        </span>
+                    </p>
+                        <p *ngIf="weeklyInfo" class="lastUpdated text-bottom"> <strong> Last Updated:</strong> {{forecastInfo.current.last_updated}}</p>
+                    </div>
+                    </ng-container>
+                    <ng-template #loading2>
+                        <h6>Loading...</h6>
+                    </ng-template>
+                </div>
+                    <!-- end of col2 -->
+                </div>
+                <!-- <div class="row">
+                    
+                </div> -->
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+
+    <!-- Start your project here-->
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark blue-gradient" [containerInside]="false">
+
+  <!-- Navbar brand -->
+  <mdb-navbar-brand><a class="navbar-brand" routerLink="/" >Angular-Weather</a></mdb-navbar-brand>
+
+  <!-- Collapsible content -->
+  <links>
+
+    <!-- Links -->
+    <ul class="navbar-nav">
+
+      <li class="nav-item" id="about">
+        <a class="nav-link waves-light" routerLink="/about" mdbWavesEffect><mdb-icon fas icon="info-circle"></mdb-icon> About</a>
+      </li>
+
+    </ul>
+    <!-- Links -->
+  </links>
+  <!-- Collapsible content -->
+
+</mdb-navbar>
+<!--/.Navbar-->
+<!-- /Start your project here-->
+
+<router-outlet></router-outlet>
+    

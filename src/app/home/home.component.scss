@@ -1,0 +1,57 @@
+div.jumbotron{
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/assets/background.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1,
+h3 {
+  text-align: center;
+}
+
+// the row containing weather info
+  #mainrow{
+      padding: 10px;
+  }
+  
+//   sets right border for the first column
+  #col-1{
+      border-right: 1px solid white
+  }
+
+//   styles the current details display element
+.currentDetails{
+    font-size: 13px;
+    margin-top: 50px;
+}
+
+// styles the following days text
+.followDays{
+    font-size: 13px;
+    margin-top: 50px !important;
+}
+
+// styles the last updated text
+  .lastUpdated{
+      font-size: 10px;
+    //   margin-top: 50px !important;
+  }
+
+//   img tags
+  img{
+      margin-top: 5px;
+  }
+//   sets styling for the weekly weather images
+.weeklyImg{
+    width: 30px !important;
+    height: 30px !important;
+}
+
+// sets specific responsive styling for the col1
+  @media(max-width: 767px){
+    #col-1{
+        border-right: none;
+        border-bottom: 2px solid white;
+    }
+}
